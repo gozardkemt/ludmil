@@ -1,0 +1,737 @@
+/*****************************************************************************************
+******************************************************************************************
+******************************************************************************************
+
+CSS Styles Sheet Content
+0. Variables
+1. Myers´ CSS Reset
+2. Generals edits and fonts
+3. Mobile and Old Browsers (max-width 799px)
+4. Grid and New Browsera (min-width 800px)
+5. Others
+
+******************************************************************************************
+******************************************************************************************
+*****************************************************************************************/
+/******************************************************************************
+0. CSS Variables
+******************************************************************************/
+:root {
+	/* Font colors */
+	--main-font-color: rgb(40, 40, 40);
+	--secondary-gray-color: #b3b3b3;
+	/* Fonts sizes */
+	--smallest-font-size: 0.7em;
+	--smaller-font-size: 0.8em;
+	/* copyright a field nav under 350px */
+	--small-font-size: 0.9em;
+	/* figcaption */
+	--base-font-size: 1em;
+	--big-font-size: 1.1em;
+	/* field navigation min 800px */
+	--bigger-font-size: 1.2em;
+	/* gallery nav before */
+	--biggest-font-size: 1.3em;
+	/* artist-name */
+}
+
+/******************************************************************************
+1. Myers´ CSS Reset
+******************************************************************************/
+*, *:before, *:after {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+	outline: none;
+	/* outline: 1px solid black; */
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+button,
+input,
+optgroup,
+select, textarea {
+	font-family: inherit;
+	line-height: inherit;
+	margin: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	font-size: inherit;
+}
+
+/* iOS CSS Input Reset */
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+.input-checkbox {
+	-webkit-appearance: none;
+	border-radius: 0;
+}
+
+/******************************************************************************
+2. General edits
+******************************************************************************/
+html, body {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0px;
+	height: 100vh;
+	width: 100vw;
+}
+
+*, *:before, *:after {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+	/* outline: 1px solid black; */
+}
+
+body {
+	font-size: var(--base-font-size);
+	font-family: Courier, monospace;
+	font-weight: 400;
+	color: var(--main-font-color);
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	font-smooth: always;
+	-moz-osx-font-smoothin: grayscale;
+	}
+
+.field-navigation a:not(:first-of-type)::before {
+	content: "/";
+	padding-right: 0.5em;
+	margin: 0px;
+}
+
+a:hover::before {
+	display: inline-block;
+	text-decoration: none;
+}
+
+a:active {
+	transform: translate(0, 1px);
+}
+
+a:hover,
+a:focus {
+	text-decoration: underline;
+}
+
+.gallery-nav__item a:hover {
+	text-decoration: none;
+}
+
+/******************************************************************************
+3. Mobile and Old Browsers
+******************************************************************************/
+/* Artist name */
+.artist-name {
+	display: block;
+	text-align: left;
+	margin: 20px;
+	margin-right: 20em;
+	font-size: var(--smaller-font-size);
+}
+
+/* Field Navigation */
+.field-navigation {
+	font-size: var(--smallest-font-size);
+	position: relative;
+}
+
+.field-nav__container {
+	position: absolute;
+	right: 20px;
+	top: calc(-21px - 1em);
+}
+
+.field-nav-selected {
+	text-decoration: underline;
+
+}
+
+
+/* gallery navigation */
+.gallery-navigation {
+	background-color: var(--secondary-gray-color);
+	font-size: var(--small-font-size);
+	text-transform: uppercase;
+	font-family: sans-serif;
+	color: white;
+	line-height: 2.5em;
+	letter-spacing: 0.2em;
+}
+
+.gallery-nav__section {
+	padding: 20px;
+}
+
+.gallery-nav__section:not(.gallery-nav__section--selected),
+.intro__arrow--back,
+.intro__arrow--next,
+.gallery-nav__imgdate {
+	display: none;
+}
+
+.gallery-nav__item--selected::before,
+.gallery-nav__item--selected::after,
+.gallery-nav__item:hover::before,
+.gallery-nav__item:hover::after {
+	position: relative;
+	content: "·";
+	left:0;
+	top: 0;
+	font-weight: bold;
+}
+
+.gallery-nav__item--selected::after,
+.gallery-nav__item:hover::after {
+	color: var(--secondary-gray-color);
+}
+
+/* gallery */
+
+.gallery__intro {
+	display: block;
+	font-size: 1rem;
+	font-weight: normal;
+
+	line-height: 2.5em;
+	letter-spacing: 0.2em;
+	word-spacing: 0.1em;
+	text-align:justify;
+
+	min-width: 20em;
+	max-width: 50em;
+	margin: 0 auto;
+}
+
+.gallery__intro p {
+	font-size: 0.9em;
+	text-indent: 3em;
+	padding-bottom: 2em;
+
+	cursor: text;
+}
+
+.gallery__intro h1 {
+	text-align:center;
+	line-height: normal;
+	letter-spacing: 0.2em;
+	padding-bottom: 2em;
+}
+
+.gallery__intro time {
+	font-variant: small-caps;
+}
+
+.gallery__intro em {
+	font-weight: bold;
+	letter-spacing: 0.20em;
+}
+
+.gallery__intro img {
+	float: right;
+	width: 20em;
+	max-width: 100%;
+	height: auto;
+	margin: 2em;
+}
+
+.arrow {
+	text-decoration: none !important;
+}
+
+.gallery__jumper {
+	display: none;
+}
+
+.gallery__list {
+	padding: 20px;
+}
+
+.gallery__item {
+	margin-bottom: 20px;
+}
+
+.gallery__image {
+	border: 0;
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+.gallery__figure {
+	text-align: center;
+}
+
+.gallery__caption {
+	font-style: italic;
+	font-size: var(--smallest-font-size);
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+/* Controls */
+.dots-controls {
+	display: none;
+}
+
+/* Copyright */
+.copyright {
+	text-align: center;
+	margin: 40px;
+	font-size: var(--smallest-font-size);
+	color: var(--secondary-gray-color);
+}
+
+@media screen and (min-width: 438px) {
+
+	.artist-name,
+	.field-navigation,
+	.gallery-navigation {
+		font-size: var(--small-font-size);
+	}
+
+	.gallery-navigation {
+		font-size: var(--base-font-size);
+	}
+
+	.gallery__caption,
+	.copyright {
+		font-size: var(--smaller-font-size);
+	}
+}
+
+@media screen and (min-width: 638px) {
+	.artist-name {
+		margin: 40px;
+	}
+
+	.gallery__item {
+		margin-bottom: 40px;
+	}
+
+	.gallery__list {
+		padding: 40px;
+	}
+
+	.field-nav__container {
+		right: 40px;
+		top: calc(-41px - 1em);
+	}
+
+	.gallery__caption {
+		padding-bottom: 40px;
+	}
+}
+
+@media screen and (min-width: 769px) {
+
+	/* gallery */
+	.gallery {
+		width: 48em;
+		margin: 40px auto;
+	}
+
+	.gallery__caption {
+		font-size: var(--small-font-size);
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.gallery {
+		width: 55em;
+	}
+}
+
+@media screen and (min-width: 1640px) {
+	.gallery {
+		width: 65em;
+	}
+
+	.gallery__item {
+		margin-bottom: 80px;
+	}
+}
+
+@media screen and (min-width: 2000px) {
+	.gallery {
+		width: 85em;
+	}
+}
+
+@supports (grid-area: auto) {
+	@media screen and (min-width: 900px) {
+		.site {
+			display: grid;
+			padding: 3em;
+			grid-gap: 2em;
+			height: 100vh;
+			grid-template-columns: min-content minmax(30em, 1fr) minmax(min-content, 10em);
+			grid-template-rows: 5em minmax(min-content, 1fr) minmax(min-content, 5em);
+			grid-template-areas: 'artist-name fields-navigation fields-navigation'
+								'gallery-navigation gallery gallery'
+								'controls copyright copyright';
+		}
+
+		/* artist name <--- ************************************************************************************************/
+		.artist-name {
+			text-align: left;
+			margin: 0;
+			font-size: var(--base-font-size);
+		}
+
+		/* fields-navigation <--- ************************************************************************************************/
+		.field-nav__container {
+			grid-area: artist-name;
+			position: static;
+		}
+
+		.field-navigation {
+			grid-area: fields-navigation;
+			text-align: right;
+			white-space: nowrap;
+			font-size: var(--base-font-size);
+		}
+
+		.field-nav--selected {
+			text-decoration: underline;
+		}
+
+		.field-nav__item:active {
+			position: relative;
+			top: 1px;
+		}
+
+		.field-nav__item:active::before {
+			top: 0px;
+		}
+
+		/* gallery navigation   <--- ************************************************************************************************/
+		.gallery-navigation {
+			grid-area: gallery-navigation;
+			font-family: Courier, monospace;
+			background-color: white;
+			color: var(--main-font-color);
+			font-size: var(--small-font-size);
+			line-height: 1.5em;
+			letter-spacing: 2.5px;
+			text-transform: capitalize;
+			overflow-y: auto;
+			direction: rtl;
+		}
+
+		.gallery-nav__section {
+			padding: unset;
+		}
+
+		.gallery-nav__item {
+			margin: unset;
+			white-space: nowrap;
+			margin-bottom: 1em;
+			text-align: left;
+		}
+
+		.gallery-nav__imgdate::before {
+			content: "/ ";
+		}
+
+		.gallery-nav__item--selected::after,
+		.gallery-nav__item:hover::before,
+		.gallery-nav__item--selected::before,
+		.gallery-nav__item:hover::after {
+			display: none;
+		}
+
+		.gallery-nav__item--selected > .gallery-nav__imgdate,
+		.gallery-nav__item:hover > .gallery-nav__imgdate  {
+			display: inline;
+		}
+
+		/* .gallery-nav__item--selected::before,
+		.gallery-nav__item--selected:hover::before
+		{
+			position: absolute;
+			content: "·";
+			left: 1.5em;
+			top: unset;
+			font-weight: bold;
+		} */
+
+		/* gallery <--- ************************************************************************************************/
+		.gallery {
+			width: auto;
+			margin: unset;
+			grid-area: gallery;
+			max-height: calc(100vh - 20em);
+			min-height: calc(10em + 2.475em);
+		}
+
+		.gallery__item:not(.gallery__item--selected) {
+			display: none;
+			padding: unset;
+			margin: unset;
+		}
+
+		.gallery__item {
+			height: 100%;
+			width: 100%;
+			margin-bottom: 0px;
+		}
+
+		.gallery__list {
+			height: 100%;
+			width: 100%;
+			margin: unset;
+			padding: unset;
+		}
+
+		.gallery__content {
+			height: 100%;
+			width: 100%;
+		}
+
+		.gallery__figure {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: unset;
+			padding: unset;
+		}
+
+		.gallery__image {
+			max-height: calc(100% - 2.475em);
+			height: auto;
+			padding: unset;
+			margin: unset;
+		}
+
+		.gallery__caption {
+			padding: unset;
+			padding-top: 2em;
+			font-style: italic;
+			font-size: var(--smaller-font-size);
+			vertical-align: center;
+		}
+
+		/* gallery jumper <--- ************************************************************************************************/
+		.gallery__jumper {
+			z-index: -1;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-column: 2 / 4;
+			grid-row: 2 / 3;
+		}
+
+		.gallery__jumper--next {
+			cursor: e-resize;
+		}
+
+		.gallery__jumper--back {
+			cursor: w-resize;
+		}
+
+		/* gallery intro section <--- ************************************************************************************************/
+
+		.gallery__intro {
+			margin: unset;
+			width: auto;
+			max-width: 100%;
+			text-align: center;
+		}
+
+		.gallery__intro img {
+			display: none;
+		}
+
+		.gallery__intro p {
+			margin: unset;
+			padding: unset;
+		}
+
+		.gallery__intro {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: center;
+			align-items: center;
+			text-align:justify;
+
+			min-width: 30em;
+			max-width: 60em;
+			margin: 0 auto;
+		}
+
+		.arrow {
+			display: block;
+			cursor:pointer;
+			font-size: 2em;
+		}
+
+		.intro__arrow--back {
+			display: block;
+			flex-basis: 25%;
+			text-align: left;
+			min-width: 1.875em;
+		}
+
+		.intro__arrow--next {
+			display: block;
+			flex-basis: 25%;
+			text-align: right;
+			min-width: 1.875em;
+		}
+
+		/* dots-controls <--- ************************************************************************************************/
+		.dots-controls {
+			grid-area: controls;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-self: end;
+			margin: auto;
+			padding-right: 9em; /* lines positions */
+		}
+
+		.dot {
+			margin: 0px;
+			padding: 0px;
+			letter-spacing: 2px;
+			font-weight: bold;
+			cursor: pointer;
+			font-size: var(--base-font-size);
+		}
+
+		.dot--active,
+		.dot:hover {
+			color: red;
+		}
+
+		/* copyright <--- ************************************************************************************************/
+		.copyright {
+			grid-area: copyright;
+			color: var(--secondary-gray-color);
+			font-size: var(--smaller-font-size);
+			white-space: nowrap;
+			margin: auto;
+			margin-right: 0;
+		}
+	}
+}
+
+@media screen and (min-width: 1175px) {
+
+	.copyright {
+		font-size: var(--small-font-size);
+	}
+
+	.site {
+		grid-template-areas: 'artist-name fields-navigation fields-navigation'
+							'gallery-navigation gallery .'
+							'controls gallery copyright';
+	}
+
+	.gallery__intro {
+		font-size: 1rem;
+		font-weight: normal;
+
+		line-height: 2.5em;
+		letter-spacing: 0.2em;
+		word-spacing: 0.1em;
+	}
+
+	.gallery__intro img {
+		display: block;
+	}
+
+	.gallery__jumper {
+		grid-column: 2 / 2;
+	}
+}
+
+@media screen and (min-width: 1500px) {
+	.gallery-navigation {
+		/* grid-area: 4 / 2 / 18 / 6; */
+	}
+
+	.dots-controls {
+		/* grid-area: 18 / 2 / 19 / 4; */
+	}
+}
+
+@media screen and (min-width: 2000px) {
+	.gallery-navigation {
+		/* grid-area: 4 / 2 / 18 / 5; */
+	}
+
+	.dots-controls {
+		/* grid-area: 18 / 2 / 19 / 3; */
+	}
+}
+
+/******************************************************************************
+7. Others
+******************************************************************************/
+/* clearfix  */
+.wrapper:before,
+.wrapper:after {
+	content: "";
+	display: table;
+}
+
+.wrapper:after {
+	clear: both;
+}
+
+.wrapper {
+	*zoom: 1;
+}
