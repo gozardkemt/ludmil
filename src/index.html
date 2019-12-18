@@ -17,29 +17,29 @@
     <body>
         <div class="site">
             <nav class="gallery-navigation">
-                <div class="gallery-nav__section gallery-nav__section--selected" id="paints" >
+                <div class="gallery-nav__section gallery-nav__section--selected" id="paint" >
                  <ul>
-                   <li class="gallery-nav__item gallery-nav__item--selected">
+                   <li class="gallery-nav__item gallery-nav__item--selected" data-paint="transfig">
                       <a href="#">Transfigurácie</a> <date class="gallery-nav__imgdate">2019</date>
                    </li>
-                   <li class="gallery-nav__item">
+                   <li class="gallery-nav__item" data-paint="transform">
                       <a href="#">Transformácie</a> <date class="gallery-nav__imgdate">2019</date>
                    </li>
-                   <li class="gallery-nav__item">
+                   <li class="gallery-nav__item" data-paint="allocation">
                       <a href="#">Vymedzenie</a> <date class="gallery-nav__imgdate">2019</date>
                    </li>
-                   <li class="gallery-nav__item">
+                   <li class="gallery-nav__item" data-paint="deposits">
                       <a href="#">Sedimenty</a> <date class="gallery-nav__imgdate">2018</date>
                    </li>
-                   <li class="gallery-nav__item">
+                   <li class="gallery-nav__item" data-paint="oecesis">
                       <a href="#">Zakorenenie</a> <date class="gallery-nav__imgdate">2017</date>
                    </li>
-                   <li class="gallery-nav__item">
+                   <li class="gallery-nav__item" data-paint="denatura">
                       <a href="#">Denatura</a> <date class="gallery-nav__imgdate">2016</date>
                    </li>
                  </ul>
                </div>
-                <div class="gallery-nav__section" id="sounds">
+                <div class="gallery-nav__section" id="sound">
                  <ul>
                    <li class="gallery-nav__item">
                       <a href="">Zvuk 1</a>
@@ -65,7 +65,7 @@
                    </li>
                  </ul>
                </div>
-                <div class="gallery-nav__section" id="others">
+                <div class="gallery-nav__section" id="more">
                  <ul>
                    <li class="gallery-nav__item">
                       <a href="">Iné</a>
@@ -81,63 +81,74 @@
             <div class="artist-name"><a href="#">Ľudmila Machová</a></div>
             <menu class="field-navigation">
               <div class="field-nav__container">
-                <a href="*" class="field-nav__item field-nav--selected">maľba</a>
-                <a href="*" class="field-nav__item">zvuk</a>
-                <a href="*" class="field-nav__item">video</a>
-                <a href="*" class="field-nav__item">viac</a>
-                <a href="*" class="field-nav__item">en</a>
+                <a href="*" class="field-nav__item field-nav--selected" data-field="paint">maľba</a>
+				<span>/</span>
+                <a href="*" class="field-nav__item" data-field="sound">zvuk</a>
+				<span>/</span>
+                <a href="*" class="field-nav__item" data-field="video">video</a>
+				<span>/</span>
+                <a href="*" class="field-nav__item" data-field="more">viac</a>
+				<span>/</span>
+                <a href="*" class="field-nav__lang">en</a>
               </div>
             </menu>
+			<div class="gallery__jumper">
+				<div class="gallery__jumper--back"></div>
+				<div class="gallery__jumper--next"></div>
+			</div>
             <main class="gallery">
                 <div class="gallery__content">
                   <ul class="gallery__list">
-                    <li class="gallery__item gallery__item--selected">
+                    <!-- <li class="gallery__item">
 						<article class="gallery__intro">
 							<div class="intro__arrow--back">
-								<a class="arrow arrow--back">&#8592;</a>
+								<a class="arrow arrow--back">&#x2190;</a>
 							</div>
 							<div class="intro__text">
-							<h1>Transfigurácie</h1>
-							<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. <p>Vestibulum tortor quam, feugiat vitae, ultricies eget. <p>Tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Maroško šaško ultricies mi vitae est.</em>
-							<img class="intro__photos" src="src/img/photos/2.jpg">
-							Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum <time>1.1.2019</time> <p>Aha čauko commodo vitae, ornare sit amet, wisi. <p>Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.<p>
+							<p>zábery z výstavy v Nitrianskej Galérii</p>
+							<p>13. 9. – 10. 11. 2019</p>
+							<p>kurátorka výstavy: Marianna Brinzová</p>
+							<p>foto: Michal Huba</p>
 							</div>
 							<div class="intro__arrow--next">
-							<a class="arrow arrow--next">&#8594;</a>
+							<a class="arrow arrow--next">&#x2192;</a>
 							</div>
 						</article>
-                    </li>
-                    <li class="gallery__item">
+                    </li> -->
+                    <li class="gallery__item gallery__item--selected">
                         <figure class="gallery__figure">
-                          <img class="gallery__image" src="src/img/test2.jpg" alt="">
-                          <figcaption class="gallery__caption">Obrázok bez názvu</figcaption>
+                          <img class="gallery__image" src="src/img/paint/transfig/0.jpg" alt="">
+                          <figcaption class="gallery__caption">Transformácia III., 145 x 160 cm, akryl, olej a syntetická prírodnina na plátne, 2019</figcaption>
                         </figure>
                     </li>
                     <li class="gallery__item">
                       <figure class="gallery__figure">
-                        <img class="gallery__image" src="src/img/trans/3.jpg" alt="">
-                        <figcaption class="gallery__caption">Obrázok bez názvu</figcaption>
+                        <img class="gallery__image" src="src/img/paint/transfig/2.jpg" alt="">
+                        <figcaption class="gallery__caption">Transformácia IV., 23 x 25 cm,  kombinovaná technika na plátne, 2019</figcaption>
                       </figure>
                     </li>
-                    <li class="gallery__item">
+                    <li class="gallery__item ">
                       <figure class="gallery__figure">
-                        <img class="gallery__image" src="src/img/trans/3.jpg" alt="">
-                        <figcaption class="gallery__caption">Obrázok bez názvu</figcaption>
+                        <img class="gallery__image" src="src/img/paint/transfig/3.jpg" alt="">
+                        <figcaption class="gallery__caption">Transformácia IV., 23 x 25 cm,  kombinovaná technika na plátne, 2019</figcaption>
                       </figure>
                     </li>
-                    <li class="gallery__item">
+                    <li class="gallery__item ">
                       <figure class="gallery__figure">
-                        <img class="gallery__image" src="src/img/trans/4.jpg" alt="">
-                        <figcaption class="gallery__caption">Obrázok bez názvu</figcaption>
+                        <img class="gallery__image" src="src/img/paint/transfig/4.jpg" alt="">
+                        <figcaption class="gallery__caption">Transformácia I., 130 x 160 cm,  akryl a syntetická prírodnina na plátne, 2018</figcaption>
+                      </figure>
+                    </li>
+                    <li class="gallery__item ">
+                      <figure class="gallery__figure">
+                        <img class="gallery__image" src="src/img/paint/transfig/5.jpg" alt="">
+                        <figcaption class="gallery__caption">Do vnútra, 70 x 90 cm,  akryl a syntetická prírodnina na plátne, 2019</figcaption>
                       </figure>
                     </li>
                   </ul>
                 </div>
               </main>
-			  <div class="gallery__jumper">
-				  <div class="gallery__jumper--back"></div>
-				  <div class="gallery__jumper--next"></div>
-			  </div>
+
             <div class="dots-controls"><!--
 			--><span class="dot dot--active">·</span><!--
                 --><span class="dot">·</span><!--
@@ -161,7 +172,7 @@
                 --><span class="dot">·</span><!--
                 --><span class="dot">·</span>
             </div>
-            <footer class="copyright"><a class="copyright__link" href="*">gorazd</a> · 2019</footer>
+            <footer class="copyright"><a class="copyright__link" href="https://github.com/gorazdkmet">gorazd</a> · 2019</footer>
         </div>
 	</body>
 </html>
