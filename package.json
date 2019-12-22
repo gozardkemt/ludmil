@@ -13,8 +13,7 @@
     "watch": "npm run dev -- --watch",
     "start": "webpack-dev-server --config webpack.dev.js --open 'Firefox Developer Edition'",
     "hot": "webpack-dev-server --config webpack.dev.js --hotOnly",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d public"
   },
   "keywords": [],
   "author": "",
