@@ -3,7 +3,7 @@
   "name": "Ludmila",
   "version": "1.0.0",
   "description": "",
-  "main": "src/js/index.js",
+  "main": "public/index.html",
   "sideEffects": [
     "./src/css/*"
   ],
