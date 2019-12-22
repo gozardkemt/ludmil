@@ -1,9 +1,9 @@
 {
   "homepage": "https://gorazdkmet.github.io/ludmil/",
-  "name": "Ludmila",
+  "name": "ludmila",
   "version": "1.0.0",
   "description": "",
-  "main": "public/index.html",
+  "main": "docs/index.html",
   "sideEffects": [
     "./src/css/*"
   ],

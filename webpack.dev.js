@@ -7,7 +7,7 @@ module.exports = merge(common, {
     mode: 'development',
     devtool: 'source-map',
 	output: {
-	  filename: '[name].[hash:8].js',
+		filename: '[name].[hash:8].js',
 	},
 	devServer: {
 		publicPath: '/',
@@ -21,7 +21,18 @@ module.exports = merge(common, {
 				'style-loader',
 				'css-loader'
 				]
-			}
+			},
+			{
+			test: /\.(png|svg|jpe?g|gif)$/,
+			use: [
+				{
+					loader: 'file-loader',
+					options: {
+						name: '[path][name].[ext]',
+					}
+				}
+			]
+		}
 		]
 	}
 });

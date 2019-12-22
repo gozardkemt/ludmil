@@ -2,6 +2,7 @@ import {data} from './data.js';
 import {clearLocalStorage} from './handleLocalStorage.js';
 import addListenersDotJump from './addListenersDotJump.js';
 
+
 // website spesific constants
 
 const galleryItemSelecClass = 'gallery__item--selected';
@@ -34,10 +35,9 @@ export default function renderGallery(field, cycle, fileNum, lang) {
 function createGalleryContent(field, item, fotos, fileNum) {
 
 	return fotos.reduce( (a, f, i) =>
-
 		a + `<li class="gallery__item ${insertSelectedClass(i, fileNum, galleryItemSelecClass)}">
 				<figure class="gallery__figure">
-			  		<img class="gallery__image" src="src/img/${field}/${item}/${i}.jpg" alt="${item}_foto">
+			  		<img class="gallery__image" src="img/${field}/${item}/${i}.jpg" alt="${item}_foto">
 			  		<figcaption class="gallery__caption">${f}</figcaption>
 				</figure>
 			</li>`
@@ -47,7 +47,7 @@ function createGalleryContent(field, item, fotos, fileNum) {
 function createErrorContent(cycle = 'Nepoznám') {
 	return 	`<li class="gallery__item ${galleryItemSelecClass}">
 				<figure class="gallery__figure">
-				  <img class="gallery__image" alt="${cycle}_foto">
+				  <img class="gallery__image" alt='${cycle}_img'>
 				  <figcaption class="gallery__caption">Obrázok nenájdený</figcaption>
 				</figure>
 			</li>`;

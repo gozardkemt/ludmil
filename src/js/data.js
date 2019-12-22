@@ -17,7 +17,24 @@ export const data = {
 					'Obrázok bez názvu 1',
 					'Obrázok bez názvu 2',
 					'Obrázok bez názvu 3',
-					'Obrázok bez názvu 4'
+					'Obrázok bez názvu 4',
+					'Obrázok bez názvu 5',
+					'Obrázok bez názvu 6',
+					'Obrázok bez názvu 7',
+					'Obrázok bez názvu 8',
+					'Obrázok bez názvu 9',
+					'Obrázok bez názvu 10',
+					'Obrázok bez názvu 11',
+					'Obrázok bez názvu 12',
+					'Obrázok bez názvu 13',
+					'Obrázok bez názvu 14',
+					'Obrázok bez názvu 15',
+					'Obrázok bez názvu 16',
+					'Obrázok bez názvu 17',
+					'Obrázok bez názvu 18',
+					'Obrázok bez názvu 19',
+					'Obrázok bez názvu 20',
+					'Obrázok bez názvu 21'
 				]
 			},
 			transform: {
