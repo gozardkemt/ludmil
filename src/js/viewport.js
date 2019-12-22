@@ -1,6 +1,5 @@
 import {underLayoutBreakpoint} from './helpers.js'
 
-
 export default function addViewpoerListeners() {
 
 	// window.addEventListener('pageshow', function() { addGalleryNav() });

@@ -1,10 +1,13 @@
 import saveLastPosition from './saveLastPosition.js';
+import renderGallery from './renderGallery.js';
 import {underLayoutBreakpoint, switchClass} from './helpers.js'
 
 export default function addListenersToFieldNavigation () {
 
 	const fieldNavSelecClass = 'field-nav--selected';
 	const galleryNavSecSelecClass = 'gallery-nav__section--selected';
+	const activeCycleClass = 'gallery-nav__item--selected';
+
 	const fieldNav = document.getElementsByClassName('field-nav__container')[0];
 	const fieldNavItems = fieldNav.querySelectorAll('.field-nav__item');
 	const galleryNav = document.getElementsByClassName('gallery-navigation')[0];
@@ -15,7 +18,8 @@ export default function addListenersToFieldNavigation () {
 			e.preventDefault();
 			const previous = fieldNav.getElementsByClassName(fieldNavSelecClass)[0];
 			const selectedGalleryNav = galleryNav.getElementsByClassName(galleryNavSecSelecClass)[0];
-			const selectedNav = document.getElementById(this.dataset.field);
+			const field = this.dataset.field;
+			const selectedNav = document.getElementById(field);
 
 			if (selectedGalleryNav === undefined) {
 				selectedNav.classList.add(galleryNavSecSelecClass); return;
@@ -36,7 +40,12 @@ export default function addListenersToFieldNavigation () {
 				switchClass(selectedGalleryNav, selectedNav, galleryNavSecSelecClass);
 			}
 
-			// renderGallery(field,x, 0);
+			// handle the display of allways first cycle in new opened field nav
+			const prevCycle = selectedGalleryNav.getElementsByClassName(activeCycleClass)[0];
+			const firstCycle = selectedNav.getElementsByClassName('gallery-nav__item')[0];
+			switchClass(prevCycle, firstCycle, activeCycleClass);
+
+			renderGallery(field, firstCycle.dataset[field], 0, 'sk');
 			saveLastPosition();
 		})
 	});

@@ -2,10 +2,11 @@ import {clearLocalStorage, saveToStorage} from './handleLocalStorage.js';
 import {underLayoutBreakpoint} from './helpers.js'
 
 const galleryItemSelecClass = 'gallery__item--selected';
-const galleryContent = document.querySelector('.gallery__content');
-const galleryNav = document.getElementsByClassName('gallery-navigation')[0];
 const galleryNavSecSelecClass = 'gallery-nav__section--selected';
 const galleryNavItemSelecClass = 'gallery-nav__item--selected';
+
+const galleryContent = document.querySelector('.gallery__content');
+const galleryNav = document.getElementsByClassName('gallery-navigation')[0];
 
 export default function saveLastPosition() {
 

@@ -11,6 +11,7 @@ export default function startSite() {
 
 	const defaultField = 'paint';
 	const defaultCycle = 'transfig';
+	const defaultLang = 'sk';
 
 	// testing if there is saved last position from previous session
 	const field = getFromStorage('activeField') || defaultField;
@@ -24,7 +25,7 @@ export default function startSite() {
 	setInitialSelectedClasses(field, cycle);
 
 	// render gallery content
-	renderGallery(field, cycle, foto);
+	renderGallery(field, cycle, foto, defaultLang);
 
 	// attaching  event Listeners
 	addListenersToGalleryJumpers();
@@ -32,6 +33,7 @@ export default function startSite() {
 	addListenersToFieldNavigation();
 	addListenersDotJump();
 
+	// handle problem with gallery navigation desapearing
 	addViewpoerListeners();
 }
 
@@ -40,7 +42,6 @@ function setInitialSelectedClasses(field, cycle) {
 	const fieldNavSelecClass = 'field-nav--selected';
 	const galleryNavSecSelecClass = 'gallery-nav__section--selected';
 	const galleryNavItemSelecClass = 'gallery-nav__item--selected';
-
 
 	const fieldNav = document.getElementsByClassName('field-nav__container')[0];
 	const selectedFieldMenu = fieldNav.querySelector(`[data-field='${field}']`);

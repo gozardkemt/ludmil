@@ -24,7 +24,7 @@ export default function addListenersToActiveGalleryItems () {
 			const field = activeGallery.id;
 			const cycle = this.dataset[field];
 
-			renderGallery(field, cycle, 0);
+			renderGallery(field, cycle, 0, 'sk');
 			saveLastPosition();
 		})
 
