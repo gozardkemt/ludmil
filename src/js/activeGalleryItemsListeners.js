@@ -1,8 +1,7 @@
-import saveLastPosition from './saveLastPosition.js';
+import {savePosition} from './handleLocalStorage.js';
 import renderGallery from './renderGallery.js';
 
-
-export default function addListenersToActiveGalleryItems () {
+export default function addListenersToActiveGalleryItems (data) {
 
 	const activeFieldClass = 'gallery-nav__section--selected';
 	const activeCycleClass = 'gallery-nav__item--selected';
@@ -24,8 +23,8 @@ export default function addListenersToActiveGalleryItems () {
 			const field = activeGallery.id;
 			const cycle = this.dataset[field];
 
-			renderGallery(field, cycle, 0, 'sk');
-			saveLastPosition();
+			renderGallery(field, cycle, 0, data, 'sk');
+			savePosition(field, cycle, 0);
 		})
 
 	});

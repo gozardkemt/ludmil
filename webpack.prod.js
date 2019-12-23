@@ -65,9 +65,16 @@ module.exports = merge(common, {
 		}),
 		new ImageminPlugin({
 			test: /\.(jpe?g|png|gif|svg)$/i,
-			minFileSize: 250000,
+			minFileSize: 20000,
 			plugins: [
-				imageminWebp({preset:'photo', quality: 20})
+				imageminWebp({preset:'photo', quality: 40})
+			]
+		}),
+		new ImageminPlugin({
+			test: /\.(jpe?g|png|gif|svg)$/i,
+			minFileSize: 20000,
+			plugins: [
+				imageminWebp({preset:'photo', quality: 30})
 			]
 		})
 	]

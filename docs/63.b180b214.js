@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[63],{68:function(i,o,p){"use strict";p.r(o),o.default=p.p+"img/video/video1/2.jpg"}}]);

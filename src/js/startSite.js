@@ -5,9 +5,10 @@ import addListenersToFieldNavigation from './fieldNavListeners.js';
 import addListenersDotJump from './addListenersDotJump.js';
 import addViewpoerListeners from './viewport.js'
 import {clearLocalStorage, getFromStorage} from './handleLocalStorage.js';
-import {underLayoutBreakpoint} from './helpers.js'
+import {underLayoutBreakpoint} from './helpers.js';
+import {fetchData} from './fetchData.js';
 
-export default function startSite() {
+export default async function startSite() {
 
 	const defaultField = 'paint';
 	const defaultCycle = 'transfig';
@@ -18,6 +19,8 @@ export default function startSite() {
 	const cycle = getFromStorage('activeCycle') || defaultCycle;
 	const foto = parseInt(getFromStorage('activeFoto')) || 0;
 
+	const data = await fetchData('http://127.0.0.1:8080/src/js/data.json');
+
 	// either way clearing the localStorage after extraction
 	clearLocalStorage();
 
@@ -25,16 +28,17 @@ export default function startSite() {
 	setInitialSelectedClasses(field, cycle);
 
 	// render gallery content
-	renderGallery(field, cycle, foto, defaultLang);
+	renderGallery(field, cycle, foto, data, defaultLang);
 
 	// attaching  event Listeners
-	addListenersToGalleryJumpers();
-	addListenersToActiveGalleryItems();
-	addListenersToFieldNavigation();
-	addListenersDotJump();
+	addListenersToGalleryJumpers(data);
+	addListenersToActiveGalleryItems(data);
+	addListenersToFieldNavigation(data);
+	addListenersDotJump(data);
 
 	// handle problem with gallery navigation desapearing
 	addViewpoerListeners();
+
 }
 
 function setInitialSelectedClasses(field, cycle) {

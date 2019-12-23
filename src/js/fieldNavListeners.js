@@ -1,8 +1,8 @@
-import saveLastPosition from './saveLastPosition.js';
+import {savePosition} from './handleLocalStorage.js';
 import renderGallery from './renderGallery.js';
 import {underLayoutBreakpoint, switchClass} from './helpers.js'
 
-export default function addListenersToFieldNavigation () {
+export default function addListenersToFieldNavigation (data) {
 
 	const fieldNavSelecClass = 'field-nav--selected';
 	const galleryNavSecSelecClass = 'gallery-nav__section--selected';
@@ -16,6 +16,7 @@ export default function addListenersToFieldNavigation () {
 
 		i.addEventListener('click', function(e) {
 			e.preventDefault();
+
 			const previous = fieldNav.getElementsByClassName(fieldNavSelecClass)[0];
 			const selectedGalleryNav = galleryNav.getElementsByClassName(galleryNavSecSelecClass)[0];
 			const field = this.dataset.field;
@@ -45,8 +46,8 @@ export default function addListenersToFieldNavigation () {
 			const firstCycle = selectedNav.getElementsByClassName('gallery-nav__item')[0];
 			switchClass(prevCycle, firstCycle, activeCycleClass);
 
-			renderGallery(field, firstCycle.dataset[field], 0, 'sk');
-			saveLastPosition();
+			renderGallery(field, firstCycle.dataset[field], 0, data, 'sk');
+			savePosition(field, firstCycle.dataset[field]);
 		})
 	});
 }

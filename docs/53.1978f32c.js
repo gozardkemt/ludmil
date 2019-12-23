@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[53],{58:function(n,p,i){"use strict";i.r(p),p.default=i.p+"img/paint/transform/2.jpg"}}]);

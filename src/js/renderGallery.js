@@ -1,7 +1,6 @@
-import {data} from './data.js';
 import {clearLocalStorage} from './handleLocalStorage.js';
 import addListenersDotJump from './addListenersDotJump.js';
-
+import showPage from './showPage.js';
 
 // website spesific constants
 
@@ -10,41 +9,26 @@ const activeDotClass = 'dot--active';
 
 // DOM elements
 
-const galleryContent = document.querySelector('.gallery__content');
-const galleryContentList = galleryContent.querySelector('.gallery__list');
 const dotsContainer = document.getElementsByClassName('dots-controls')[0];
+const galleryList = document.querySelector('.gallery__list');
 
+export default function renderGallery(field, cycle, id, data, lang) {
 
-export default function renderGallery(field, cycle, fileNum, lang) {
+	const fotosCaptions = data[lang][field][cycle].fotos || false;
 
-	const fotos = data[lang][field][cycle].fotos;
-
-	if (!fotos) {
-		galleryContentList.innerHTML = createErrorContent(cycle);
-		dotsContainer.innerHTML = null;
+	if (!fotosCaptions) {
+		galleryList.innerHTML = createError(cycle);
 		return;
 	}
+	const fotoCaption = fotosCaptions[id];
+	showPage(field, cycle, id, data, lang);
+	dotsContainer.innerHTML = createNewDots(fotosCaptions, id);
 
-	galleryContentList.innerHTML = createGalleryContent(field, cycle, fotos, fileNum);
-	dotsContainer.innerHTML = createNewDots(fotos, fileNum);
-
-	addListenersDotJump();
-	clearLocalStorage();
+	addListenersDotJump(data);
+	clearLocalStorage(field, cycle, id);
 }
 
-function createGalleryContent(field, item, fotos, fileNum) {
-
-	return fotos.reduce( (a, f, i) =>
-		a + `<li class="gallery__item ${insertSelectedClass(i, fileNum, galleryItemSelecClass)}">
-				<figure class="gallery__figure">
-			  		<img class="gallery__image" src="img/${field}/${item}/${i}.jpg" alt="${item}_foto">
-			  		<figcaption class="gallery__caption">${f}</figcaption>
-				</figure>
-			</li>`
-	, '');
-}
-
-function createErrorContent(cycle = 'Nepoznám') {
+function createError(cycle = 'Nepoznám') {
 	return 	`<li class="gallery__item ${galleryItemSelecClass}">
 				<figure class="gallery__figure">
 				  <img class="gallery__image" alt='${cycle}_img'>

@@ -1,5 +1,6 @@
-import saveLastPosition from './saveLastPosition.js';
-import {switchClass} from './helpers.js'
+import {savePosition} from './handleLocalStorage.js';
+import {switchClass, getInfoFromImg} from './helpers.js'
+import showPage from './showPage.js';
 
 
 const galleryItemSelecClass = 'gallery__item--selected';
@@ -8,26 +9,24 @@ const activeDotClass = 'dot--active';
 const galleryContent = document.querySelector('.gallery__content');
 const dotsContainer = document.getElementsByClassName('dots-controls')[0];
 
-export default function addListenersDotJump() {
+export default function addListenersDotJump(data) {
 	const allDots = dotsContainer.querySelectorAll('.dot');
 
 	allDots.forEach( function(dot) {
 		dot.addEventListener('click', function(e) {
 			e.preventDefault();
-
+			
+			// testing if not clicking on the same element
 			const activeDot = dotsContainer.getElementsByClassName(activeDotClass)[0];
-
 			if (this === activeDot) { return }
 
-			const previous = galleryContent.getElementsByClassName(galleryItemSelecClass)[0];
-			const allGalleryItems = galleryContent.getElementsByClassName('gallery__item');
-			const next = allGalleryItems.item(this.id);
+			// getting number of img
+			const activeItem = galleryContent.getElementsByClassName(galleryItemSelecClass)[0];
+			const a = getInfoFromImg(activeItem);
 
-			if (!next) { console.error('Nenašiel sa element s indexom ' + this.id); return }
-
-			switchClass(previous, next, galleryItemSelecClass);
+			showPage(a.field, a.cycle, this.id, data, 'sk')
 			switchClass(activeDot, this, activeDotClass);
-			saveLastPosition();
+			savePosition(a.field, a.cycle, this.id);
 		})
 	})
 
