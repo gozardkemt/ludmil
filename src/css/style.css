@@ -117,18 +117,13 @@ input[type="submit"],
 /******************************************************************************
 2. General edits
 ******************************************************************************/
-html, body {
+html, body, .site {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0px;
-	height: 100vh;
-	width: 100vw;
-}
-
-*, *:before, *:after {
-	-webkit-box-sizing: inherit;
-	box-sizing: inherit;
-	/* outline: 1px solid black; */
+	padding: 0px;
+	min-height: 100vh;
+	overflow: auto;
 }
 
 body {
@@ -141,12 +136,6 @@ body {
 	font-smooth: always;
 	-moz-osx-font-smoothin: grayscale;
 	}
-
-/* .field-navigation a:not(:first-of-type)::before {
-	content: "/";
-	padding-right: 0.5em;
-	margin: 0px;
-} */
 
 a:hover::before {
 	display: inline-block;
@@ -182,14 +171,12 @@ a:active {
 .field-nav__container {
 	position: absolute;
 	right: 20px;
-	top: calc(-21px - 1em);
+	top: calc(31px - 1em);
 }
 
-.field-nav-selected {
+.field-nav--selected {
 	text-decoration: underline;
-
 }
-
 
 /* gallery navigation */
 .gallery-navigation {
@@ -323,12 +310,16 @@ a:active {
 	color: var(--secondary-gray-color);
 }
 
-@media screen and (min-width: 438px) {
+@media screen and (min-width: 465px) {
 
 	.artist-name,
 	.field-navigation,
 	.gallery-navigation {
 		font-size: var(--small-font-size);
+	}
+
+	.field-nav__container {
+		top: calc(34px - 1em);
 	}
 
 	.gallery-navigation {
@@ -356,7 +347,7 @@ a:active {
 
 	.field-nav__container {
 		right: 40px;
-		top: calc(-41px - 1em);
+		top: calc(54px - 1em);
 	}
 
 	.gallery__caption {
@@ -431,10 +422,6 @@ a:active {
 			text-align: right;
 			white-space: nowrap;
 			font-size: var(--base-font-size);
-		}
-
-		.field-nav--selected {
-			text-decoration: underline;
 		}
 
 		.field-nav__item:active {

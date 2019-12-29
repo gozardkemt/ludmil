@@ -1,5 +1,5 @@
 import {savePosition} from './handleLocalStorage.js';
-import renderGallery from './renderGallery.js';
+import {renderGallery} from './renderGallery.js';
 import {underLayoutBreakpoint, switchClass} from './helpers.js'
 
 export default function addListenersToFieldNavigation (data) {

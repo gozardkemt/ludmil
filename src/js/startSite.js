@@ -1,4 +1,4 @@
-import renderGallery from './renderGallery.js';
+import {renderGallery, createError} from './renderGallery.js';
 import addListenersToGalleryJumpers from './jumper.js';
 import addListenersToActiveGalleryItems from './activeGalleryItemsListeners.js';
 import addListenersToFieldNavigation from './fieldNavListeners.js';
@@ -19,7 +19,13 @@ export default async function startSite() {
 	const cycle = getFromStorage('activeCycle') || defaultCycle;
 	const foto = parseInt(getFromStorage('activeFoto')) || 0;
 
-	const data = await fetchData('http://127.0.0.1:8080/src/js/data.json');
+	let data;
+	try {
+		data = await fetchData('http://localhost:8080/src/js/data.json');
+	} catch(err) {
+		document.querySelector('.gallery__list').innerHTML = createError(cycle);
+		console.error(err);
+	}
 
 	// either way clearing the localStorage after extraction
 	clearLocalStorage();

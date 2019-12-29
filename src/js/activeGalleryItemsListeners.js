@@ -1,5 +1,5 @@
 import {savePosition} from './handleLocalStorage.js';
-import renderGallery from './renderGallery.js';
+import {renderGallery} from './renderGallery.js';
 
 export default function addListenersToActiveGalleryItems (data) {
 

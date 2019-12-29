@@ -12,15 +12,16 @@ const activeDotClass = 'dot--active';
 const dotsContainer = document.getElementsByClassName('dots-controls')[0];
 const galleryList = document.querySelector('.gallery__list');
 
-export default function renderGallery(field, cycle, id, data, lang) {
+export function renderGallery(field, cycle, id, data, lang) {
 
 	const fotosCaptions = data[lang][field][cycle].fotos || false;
 
 	if (!fotosCaptions) {
 		galleryList.innerHTML = createError(cycle);
+		dotsContainer.innerHTML = null;
 		return;
 	}
-	const fotoCaption = fotosCaptions[id];
+
 	showPage(field, cycle, id, data, lang);
 	dotsContainer.innerHTML = createNewDots(fotosCaptions, id);
 
@@ -28,8 +29,8 @@ export default function renderGallery(field, cycle, id, data, lang) {
 	clearLocalStorage(field, cycle, id);
 }
 
-function createError(cycle = 'Nepoznám') {
-	return 	`<li class="gallery__item ${galleryItemSelecClass}">
+export function createError(cycle) {
+	return 	`<li>
 				<figure class="gallery__figure">
 				  <img class="gallery__image" alt='${cycle}_img'>
 				  <figcaption class="gallery__caption">Obrázok nenájdený</figcaption>

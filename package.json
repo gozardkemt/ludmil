@@ -2,7 +2,7 @@
   "homepage": "https://gorazdkmet.github.io/ludmil/",
   "name": "ludmila",
   "version": "1.0.0",
-  "description": "",
+  "description": "klub",
   "main": "docs/index.html",
   "sideEffects": [
     "./src/css/*"

@@ -28,8 +28,10 @@ function jumpContent(dir, data) {
 	// if viewport is small content do not use jumpers
 	if (underLayoutBreakpoint()) { return }
 
-	// get src info from active gallery item
-	const a = getInfoFromImg(galleryContent.getElementsByClassName(galleryItemSelecClass)[0]);
+	// get src info from active gallery item, if there is non return
+	const selected = galleryContent.getElementsByClassName(galleryItemSelecClass)[0];
+	if (!selected) { return }
+	const a = getInfoFromImg(selected)
 
 	// length of active cycle
 	const len = data['sk'][a.field][a.cycle].fotos.length - 1;
@@ -48,6 +50,5 @@ const jumpDot = (newId) => {
 
 	const allDots = dotsContainer.querySelectorAll('.dot');
 	const activeDot = dotsContainer.getElementsByClassName(activeDotClass)[0];
-
 	switchClass(activeDot, allDots[newId], activeDotClass);
 }
