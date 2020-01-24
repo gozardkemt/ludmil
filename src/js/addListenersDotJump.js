@@ -3,7 +3,7 @@ import {switchClass, getInfoFromImg} from './helpers.js'
 import showPage from './showPage.js';
 
 
-const galleryItemSelecClass = 'gallery__item--selected';
+const galleryItemSelecClass = 'gallery__item';
 const activeDotClass = 'dot--active';
 
 const galleryContent = document.querySelector('.gallery__content');
@@ -15,7 +15,7 @@ export default function addListenersDotJump(data) {
 	allDots.forEach( function(dot) {
 		dot.addEventListener('click', function(e) {
 			e.preventDefault();
-			
+
 			// testing if not clicking on the same element
 			const activeDot = dotsContainer.getElementsByClassName(activeDotClass)[0];
 			if (this === activeDot) { return }
@@ -27,6 +27,7 @@ export default function addListenersDotJump(data) {
 			showPage(a.field, a.cycle, this.id, data, 'sk')
 			switchClass(activeDot, this, activeDotClass);
 			savePosition(a.field, a.cycle, this.id);
+			
 		})
 	})
 

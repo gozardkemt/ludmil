@@ -6,26 +6,16 @@ import addListenersDotJump from './addListenersDotJump.js';
 import addViewpoerListeners from './viewport.js'
 import {clearLocalStorage, getFromStorage} from './handleLocalStorage.js';
 import {underLayoutBreakpoint} from './helpers.js';
-import {fetchData} from './fetchData.js';
 
 export default async function startSite() {
 
-	const defaultField = 'paint';
-	const defaultCycle = 'transfig';
-	const defaultLang = 'sk';
+	const data = await fetchData('http://localhost:8081/src/js/data.json');
 
-	// testing if there is saved last position from previous session
-	const field = getFromStorage('activeField') || defaultField;
-	const cycle = getFromStorage('activeCycle') || defaultCycle;
+	// testing if there is saved last position from previous session, if not use default
+	const field = getFromStorage('activeField') || 'paint';
+	const cycle = getFromStorage('activeCycle') || 'transfig';
 	const foto = parseInt(getFromStorage('activeFoto')) || 0;
-
-	let data;
-	try {
-		data = await fetchData('http://localhost:8080/src/js/data.json');
-	} catch(err) {
-		document.querySelector('.gallery__list').innerHTML = createError(cycle);
-		console.error(err);
-	}
+	const lang = getFromStorage('activeLang') || 'sk';
 
 	// either way clearing the localStorage after extraction
 	clearLocalStorage();
@@ -34,7 +24,7 @@ export default async function startSite() {
 	setInitialSelectedClasses(field, cycle);
 
 	// render gallery content
-	renderGallery(field, cycle, foto, data, defaultLang);
+	renderGallery(field, cycle, foto, data, lang);
 
 	// attaching  event Listeners
 	addListenersToGalleryJumpers(data);
@@ -44,7 +34,6 @@ export default async function startSite() {
 
 	// handle problem with gallery navigation desapearing
 	addViewpoerListeners();
-
 }
 
 function setInitialSelectedClasses(field, cycle) {
@@ -65,4 +54,21 @@ function setInitialSelectedClasses(field, cycle) {
 
 	const selectedGalleryNav = document.getElementById(field)
 	selectedGalleryNav.classList.add(galleryNavSecSelecClass);
+}
+
+export const fetchData = async (url) => {
+
+  return await fetch(url)
+	.then( d => {
+		if ( d.status !== 200 ) {
+			createNetworkError(d);
+			throw Error(d.url);
+		}
+		return d.json();
+	});
+};
+
+const createNetworkError = d => {
+	const err = `Network error status: ${d.status} - ${d.statusText}`;
+	document.querySelector('.gallery__list').innerHTML = createError(err)
 }

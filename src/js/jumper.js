@@ -2,7 +2,7 @@ import {savePosition} from './handleLocalStorage.js';
 import {underLayoutBreakpoint, switchClass, getInfoFromImg} from './helpers.js'
 import showPage from './showPage.js';
 
-const galleryItemSelecClass = 'gallery__item--selected';
+const galleryItemSelecClass = 'gallery__item';
 const activeDotClass = 'dot--active';
 
 const galleryContent = document.querySelector('.gallery__content');

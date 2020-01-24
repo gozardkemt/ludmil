@@ -39,7 +39,6 @@ CSS Styles Sheet Content
 1. Myers´ CSS Reset
 ******************************************************************************/
 *, *:before, *:after {
-	-webkit-box-sizing: inherit;
 	box-sizing: inherit;
 	outline: none;
 	/* outline: 1px solid black; */
@@ -118,12 +117,15 @@ input[type="submit"],
 2. General edits
 ******************************************************************************/
 html, body, .site {
-	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0px;
 	min-height: 100vh;
 	overflow: auto;
+}
+
+.site {
+	height: 100%; /* because of Safari */
 }
 
 body {
@@ -396,8 +398,10 @@ a:active {
 			display: grid;
 			padding: 3em;
 			grid-gap: 2em;
-			height: 100vh;
+			height: 100%; /* webkit bug */
+			grid-template-columns: -webkit-max-content minmax(30em, 1fr) minmax(-webkit-min-content, 10em);
 			grid-template-columns: max-content minmax(30em, 1fr) minmax(min-content, 10em);
+			grid-template-rows: 5em minmax(-webkit-min-content, 1fr) minmax(-webkit-min-content, 5em);
 			grid-template-rows: 5em minmax(min-content, 1fr) minmax(min-content, 5em);
 			grid-template-areas: 'artist-name fields-navigation fields-navigation'
 								'gallery-navigation gallery gallery'
@@ -481,19 +485,31 @@ a:active {
 			grid-area: gallery;
 			max-height: calc(100vh - 20em);
 			min-height: calc(10em + 2.475em);
+			height: 100%; /* webkit bug */
 		}
 
-		.gallery__item:not(.gallery__item--selected) {
+		/* .gallery__item:not(.gallery__item--selected) {
 			display: none;
 			padding: unset;
 			margin: unset;
-		}
+		} */
 
 		.gallery__item {
 			height: 100%;
 			width: 100%;
 			margin-bottom: 0px;
+		}
 
+		@keyframes fadeInUp {
+		  0% {
+		    opacity: 0;
+		  }
+		  20% {
+		    opacity: 0;
+		  }
+		  100% {
+		    opacity: 1;
+		  }
 		}
 
 		.gallery__list {
@@ -512,14 +528,16 @@ a:active {
 			height: 100%;
 			width: 100%;
 			display: flex;
+			justify-content: center;
 			flex-direction: column;
 			align-items: center;
-			justify-content: center;
 			margin: unset;
 			padding: unset;
 		}
 
 		.gallery__image {
+			animation-name: fadeInUp;
+			animation-duration: 1s;
 			max-height: calc(100% - 2.475em);
 			height: auto;
 			padding: unset;

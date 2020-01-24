@@ -4,7 +4,6 @@ import showPage from './showPage.js';
 
 // website spesific constants
 
-const galleryItemSelecClass = 'gallery__item--selected';
 const activeDotClass = 'dot--active';
 
 // DOM elements
@@ -29,11 +28,10 @@ export function renderGallery(field, cycle, id, data, lang) {
 	clearLocalStorage(field, cycle, id);
 }
 
-export function createError(cycle) {
-	return 	`<li>
+export function createError(err) {
+	return 	`<li class="gallery__item">
 				<figure class="gallery__figure">
-				  <img class="gallery__image" alt='${cycle}_img'>
-				  <figcaption class="gallery__caption">Obrázok nenájdený</figcaption>
+				  <span> ${err}</span>
 				</figure>
 			</li>`;
 }
